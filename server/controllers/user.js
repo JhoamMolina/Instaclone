@@ -55,6 +55,7 @@ async function login(input) {
 
     const passwordSucess = await bcryptjs.compare(password, userFound.password)
     if(!passwordSucess) throw new Error("Error en el email o contraseña");
+    
     return {
         token: createToken(userFound, process.env.SECRET_KEY, "24h")
     }
